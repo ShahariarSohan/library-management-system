@@ -28,14 +28,13 @@ bookRoute.post("/api/books", async (req: Request, res: Response) => {
 // get all books
 bookRoute.get("/api/books", async (req: Request, res: Response) => {
   try {
-      const genre = req.query.filter;
-      let book;
-      if (!genre) {
-         book = await Book.find().sort({ title: -1 }).limit(10);
-      }
-      else {
-         book = await Book.find({ genre }).sort({ title: -1 }).limit(10);
-      }
+    const genre = req.query.filter;
+    let book;
+    if (!genre) {
+      book = await Book.find().sort({ title: -1 }).limit(10);
+    } else {
+      book = await Book.find({ genre }).sort({ title: -1 }).limit(10);
+    }
 
     res.status(201).json({
       status: true,
@@ -51,14 +50,15 @@ bookRoute.get("/api/books", async (req: Request, res: Response) => {
   }
 });
 //get single book
+
 bookRoute.get("/api/books/:bookId", async (req: Request, res: Response) => {
   try {
-      const bookId=req.params.bookId
-     const  book = await Book.findById(bookId);
+    const bookId = req.params.bookId;
+    const book = await Book.findById(bookId);
 
     res.status(201).json({
       status: true,
-      message: "Books retrieved successfully",
+      message: "Book retrieved successfully",
       data: book,
     });
   } catch (error) {
@@ -69,5 +69,49 @@ bookRoute.get("/api/books/:bookId", async (req: Request, res: Response) => {
     });
   }
 });
+//update single book
+bookRoute.put("/api/books/:bookId", async (req: Request, res: Response) => {
+  try {
+    const bookId = req.params.bookId;
+    const existingBook = await Book.findById(bookId);
+    const updatedData = {
+      ...existingBook?.toObject(),
+      ...req.body,
+    };
+    const updatedBook = await Book.findByIdAndUpdate(bookId, updatedData, {
+      new: true,
+      overwrite: true,
+    });
 
+    res.status(201).json({
+      status: true,
+      message: "Book updated successfully",
+      data: updatedBook,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: "Validation failed",
+      success: false,
+      error: error,
+    });
+  }
+});
+bookRoute.delete("/api/books/:bookId", async (req: Request, res: Response) => {
+  try {
+    const bookId = req.params.bookId;
+    await Book.findByIdAndDelete(bookId);
+
+    res.status(201).json({
+      status: true,
+      message: "Book deleted successfully",
+      data: null,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: "Validation failed",
+      success: false,
+      error: error,
+    });
+  }
+});
 export default bookRoute;
