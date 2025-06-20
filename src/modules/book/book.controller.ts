@@ -1,7 +1,73 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
+import bookZodSchema from "./book.zod";
+import Book from "./book.model";
 
 const bookRoute = Router();
 
+//post book
 
+bookRoute.post("/api/books", async (req: Request, res: Response) => {
+  try {
+    const body = await bookZodSchema.parseAsync(req.body);
+    const book = await Book.create(body);
+
+    res.status(201).json({
+      status: true,
+      message: "Book created successfully",
+      data: book,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: "Validation failed",
+      success: false,
+      error: error,
+    });
+  }
+});
+
+// get all books
+bookRoute.get("/api/books", async (req: Request, res: Response) => {
+  try {
+      const genre = req.query.filter;
+      let book;
+      if (!genre) {
+         book = await Book.find().sort({ title: -1 }).limit(10);
+      }
+      else {
+         book = await Book.find({ genre }).sort({ title: -1 }).limit(10);
+      }
+
+    res.status(201).json({
+      status: true,
+      message: "Books retrieved successfully",
+      data: book,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: "Validation failed",
+      success: false,
+      error: error,
+    });
+  }
+});
+//get single book
+bookRoute.get("/api/books/:bookId", async (req: Request, res: Response) => {
+  try {
+      const bookId=req.params.bookId
+     const  book = await Book.findById(bookId);
+
+    res.status(201).json({
+      status: true,
+      message: "Books retrieved successfully",
+      data: book,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: "Validation failed",
+      success: false,
+      error: error,
+    });
+  }
+});
 
 export default bookRoute;
