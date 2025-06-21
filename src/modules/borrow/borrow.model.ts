@@ -2,7 +2,7 @@ import mongoose, { Schema, SchemaTypes, Types } from "mongoose";
 import { IBorrow } from "./borrow.interface";
 import Book from "../book/book.model";
 import { borrowStaticMethods } from "../borrow/borrow.interface";
-import { Request } from "express";
+
 
 const borrowSchema = new Schema<IBorrow, borrowStaticMethods>(
   {
@@ -25,11 +25,11 @@ const borrowSchema = new Schema<IBorrow, borrowStaticMethods>(
   }
 );
 
-//pre hook 
+// pre hook 
 borrowSchema.pre("save", async function () {
   const book = await Book.findById(this.book);
-  if (book && book.copies === 0) {
-    throw new Error("Book copies unavailable");
+  if (book && book.copies===0) {
+   throw new Error("Book copies  unavailable")
   }
 })
 

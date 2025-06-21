@@ -16,7 +16,7 @@ const bookSchema = new Schema<IBook>(
         "FANTASY",
       ],
     },
-    isbn: { type: String, unique: true },
+    isbn: { type: String,unique:true },
     description: { type: String },
     copies: {
       type: Number,
@@ -34,7 +34,6 @@ const bookSchema = new Schema<IBook>(
   }
 );
 
-
-const Book = mongoose.model<IBook >("Book", bookSchema);
+const Book = mongoose.model<IBook>("Book", bookSchema);
 
 export default Book;
