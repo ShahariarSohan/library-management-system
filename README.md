@@ -20,7 +20,7 @@ This is a library management server where user can keep their books.User can als
 * [https://library-management-system-4ioj.vercel.app/api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5](https://library-management-system-4ioj.vercel.app/api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5) 
 
 ##### Find books by Id Example: 
-* [https://library-management-system-4ioj.vercel.app/api/books/68567d832a2e2cf643e153b2](https://library-management-system-4ioj.vercel.app/api/books/68567d832a2e2cf643e153b2)
+* [https://library-management-system-4ioj.vercel.app/api/books/68569ca728996d8db38b8393](https://library-management-system-4ioj.vercel.app/api/books/68569ca728996d8db38b8393)
 
 
 ### Borrow Api's
@@ -29,7 +29,7 @@ This is a library management server where user can keep their books.User can als
 * [https://library-management-system-4ioj.vercel.app/api/borrow](https://library-management-system-4ioj.vercel.app/api/borrow)
 
 
-### Setup to run locally:
+### Setup locally:
 
 #### Install
 * Git
@@ -48,7 +48,7 @@ Some software you may not need to install but it is always safe to install all r
 * Clone repo from  going there .
   
 #### Use command
-* npm i  this will install all the required file like zod,dotenv you can also install it manually.
+* npm i  command install all the required file like zod,dotenv,cors etc but you can also install it manually.
 
 #### Set Environment Variable file
 * Set a .env file and if you have mongoDB client uri you can use it.
