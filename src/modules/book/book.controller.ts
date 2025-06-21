@@ -1,3 +1,4 @@
+
 import { Request, Response, Router } from "express";
 import bookZodSchema from "./book.zod";
 import Book from "./book.model";
@@ -8,9 +9,9 @@ const bookRoute = Router();
 
 bookRoute.post("/api/books", async (req: Request, res: Response) => {
   try {
-    const body = await bookZodSchema.parseAsync(req.body);
+      const body = await bookZodSchema.parseAsync(req.body);
     const book = await Book.create(body);
-
+     
     res.status(201).json({
       status: true,
       message: "Book created successfully",
