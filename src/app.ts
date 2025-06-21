@@ -11,7 +11,7 @@ app.use("/", bookRoute)
 app.use("/", borrowRoute)
 
 app.get("/", (req: Request, res: Response) => {
-    res.send("This a Library Management Server")
+    res.send("This is a Library Management Server")
 })
 
 export default app;
