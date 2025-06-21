@@ -16,16 +16,16 @@ This is a library management server where user can keep their books.User can als
 ##### Find all books 
 * [https://library-management-system-4ioj.vercel.app/api/books](https://library-management-system-4ioj.vercel.app/api/books)
   
-##### Find books by filtering genre Example :
+##### Find books by filtering genre :
 * [https://library-management-system-4ioj.vercel.app/api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5](https://library-management-system-4ioj.vercel.app/api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5) 
 
-##### Find books by Id Example: 
+##### Find books by Id: 
 * [https://library-management-system-4ioj.vercel.app/api/books/68569ca728996d8db38b8393](https://library-management-system-4ioj.vercel.app/api/books/68569ca728996d8db38b8393)
 
 
 ### Borrow Api's
 
-#### Find borrowed books summary Example:
+#### Find borrowed books summary:
 * [https://library-management-system-4ioj.vercel.app/api/borrow](https://library-management-system-4ioj.vercel.app/api/borrow)
 
 
