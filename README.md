@@ -2,7 +2,7 @@
 
 ### About 
 
-##### This is a library management server where user can keep their  books.User can also borrow books from the existing books.
+This is a library management server where user can keep their books.User can also borrow books from the existing books.In real world many users are borrowing books and purchasing books from server management system like Library Management System Server.
 
 ### Features 
 
@@ -31,4 +31,29 @@
 
 ### Setup to run locally:
 
-*
+#### Install
+* Git
+* MongoDB
+* Node js
+* Typescript
+* Express
+* Postman
+* Mongoose
+* Cors
+  
+Some software you may not need to install but it is always safe to install all required softwares.
+
+#### Github repo link given below:
+* [https://github.com/ShahariarSohan/library-management-system](https://github.com/ShahariarSohan/library-management-system)
+* Clone repo from  going there .
+  
+#### Use command
+* npm i  this will install all the required file like zod,dotenv you can also install it manually.
+
+#### Set Environment Variable file
+* Set a .env file and if you have mongoDB client uri you can use it.
+
+#### Set up file 
+* Finally Set up some file according to your requirement.
+
+
