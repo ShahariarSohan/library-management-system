@@ -5,7 +5,11 @@ import borrowRoute from './modules/borrow/borrow.controller';
 const app: Application = express();
 
 app.use(express.json())
-app.use(cors())
+app.use(
+  cors({
+    origin: ["https://library-management-ui-zeta.vercel.app"],
+  })
+);
 
 app.use("/", bookRoute)
 app.use("/", borrowRoute)
