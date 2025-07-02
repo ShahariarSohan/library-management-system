@@ -16,6 +16,7 @@ const bookSchema = new Schema<IBook>(
         "FANTASY",
       ],
     },
+    imgUrl:{type:String,required:true},
     isbn: { type: String,unique:true },
     description: { type: String },
     copies: {
