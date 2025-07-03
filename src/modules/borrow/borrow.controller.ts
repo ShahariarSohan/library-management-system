@@ -8,6 +8,7 @@ borrowRoute.post("/", async (req: Request, res: Response) => {
   try {
     const body = await borrowZodSchema.parseAsync(req.body);
     const borrow = await Borrow.create(body);
+    const { book, quantity, dueDate } = req.body;
     res.status(200).json({
       status: true,
       message: "Book borrowed successfully",

@@ -13,7 +13,7 @@ app.use(
 );
 
 app.use("/books", bookRoute);
-app.use("/books", borrowRoute);
+app.use("/borrow", borrowRoute);
 
 
 app.get("/", (req: Request, res: Response) => {
