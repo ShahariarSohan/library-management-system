@@ -4,11 +4,11 @@ import Borrow from "./borrow.model";
 
 const borrowRoute = Router();
 
-borrowRoute.post("/api/borrow", async (req: Request, res: Response) => {
+borrowRoute.post("/", async (req: Request, res: Response) => {
   try {
     const body = await borrowZodSchema.parseAsync(req.body);
     const borrow = await Borrow.create(body);
-    res.status(201).json({
+    res.status(200).json({
       status: true,
       message: "Book borrowed successfully",
       data: borrow,
@@ -21,7 +21,7 @@ borrowRoute.post("/api/borrow", async (req: Request, res: Response) => {
     });
   }
 });
-borrowRoute.get("/api/borrow", async (req: Request, res: Response) => {
+borrowRoute.get("/", async (req: Request, res: Response) => {
   try {
     const borrow = await Borrow.aggregate([
       {
@@ -50,7 +50,7 @@ borrowRoute.get("/api/borrow", async (req: Request, res: Response) => {
         },
       },
     ]);
-    res.status(201).json({
+    res.status(200).json({
       status: true,
       message: "Borrowed books summary retrieved successfully",
       data: borrow,

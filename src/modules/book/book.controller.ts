@@ -7,12 +7,12 @@ const bookRoute = Router();
 
 //post book
 
-bookRoute.post("/api/books", async (req: Request, res: Response) => {
+bookRoute.post("/", async (req: Request, res: Response) => {
   try {
       const body = await bookZodSchema.parseAsync(req.body);
     const book = await Book.create(body);
      
-    res.status(201).json({
+    res.status(200).json({
       status: true,
       message: "Book created successfully",
       data: book,
@@ -27,7 +27,7 @@ bookRoute.post("/api/books", async (req: Request, res: Response) => {
 });
 
 // get all books
-bookRoute.get("/api/books", async (req: Request, res: Response) => {
+bookRoute.get("/", async (req: Request, res: Response) => {
   try {
     const genre = req.query.filter;
     let book;
@@ -37,7 +37,7 @@ bookRoute.get("/api/books", async (req: Request, res: Response) => {
       book = await Book.find({ genre }).sort({ title: -1 }).limit(10);
     }
 
-    res.status(201).json({
+    res.status(200).json({
       status: true,
       message: "Books retrieved successfully",
       data: book,
@@ -52,12 +52,12 @@ bookRoute.get("/api/books", async (req: Request, res: Response) => {
 });
 //get single book
 
-bookRoute.get("/api/books/:bookId", async (req: Request, res: Response) => {
+bookRoute.get("/:bookId", async (req: Request, res: Response) => {
   try {
     const bookId = req.params.bookId;
     const book = await Book.findById(bookId);
 
-    res.status(201).json({
+    res.status(200).json({
       status: true,
       message: "Book retrieved successfully",
       data: book,
@@ -71,7 +71,7 @@ bookRoute.get("/api/books/:bookId", async (req: Request, res: Response) => {
   }
 });
 //update single book
-bookRoute.put("/api/books/:bookId", async (req: Request, res: Response) => {
+bookRoute.put("/:bookId", async (req: Request, res: Response) => {
   try {
     const bookId = req.params.bookId;
     const existingBook = await Book.findById(bookId);
@@ -84,7 +84,7 @@ bookRoute.put("/api/books/:bookId", async (req: Request, res: Response) => {
       overwrite: true,
     });
 
-    res.status(201).json({
+    res.status(200).json({
       status: true,
       message: "Book updated successfully",
       data: updatedBook,
@@ -97,12 +97,12 @@ bookRoute.put("/api/books/:bookId", async (req: Request, res: Response) => {
     });
   }
 });
-bookRoute.delete("/api/books/:bookId", async (req: Request, res: Response) => {
+bookRoute.delete("/:bookId", async (req: Request, res: Response) => {
   try {
     const bookId = req.params.bookId;
     await Book.findByIdAndDelete(bookId);
 
-    res.status(201).json({
+    res.status(200).json({
       status: true,
       message: "Book deleted successfully",
       data: null,
