@@ -4,7 +4,7 @@ const bookZodSchema = z.object({
   title: z.string(),
   author: z.string(),
   genre: z.string(),
-  isbn: z.string(),
+  isbn: z.string().optional(),
   imgUrl:z.string().optional(),
   description: z.string().optional(),
   copies: z.number(),
