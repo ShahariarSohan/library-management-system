@@ -3,7 +3,7 @@ export interface IBook {
   author: string;
   genre: "FICTION" | "NON_FICTION" | "SCIENCE" | "HISTORY" | "BIOGRAPHY" | "FANTASY";
   imgUrl?: string;
-  isbn?: string;
+  isbn: string;
   description?: string;
   copies: number;
   available?: boolean;
