@@ -79,6 +79,9 @@ bookRoute.put("/:bookId", async (req: Request, res: Response) => {
       ...existingBook?.toObject(),
       ...req.body,
     };
+    updatedData.copies = Number(updatedData.copies);
+    updatedData.available = updatedData.copies > 0;
+    
     const updatedBook = await Book.findByIdAndUpdate(bookId, updatedData, {
       new: true,
       overwrite: true,
