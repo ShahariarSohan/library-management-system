@@ -29,7 +29,7 @@ const borrowSchema = new Schema<IBorrow, borrowStaticMethods>(
 borrowSchema.pre("save", async function () {
   const book = await Book.findById(this.book);
   if (book && book.copies===0) {
-   throw new Error("Book copies  unavailable")
+  return  new Error("Book copies  unavailable")
   }
 })
 
