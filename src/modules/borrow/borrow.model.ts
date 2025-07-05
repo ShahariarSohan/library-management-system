@@ -27,7 +27,7 @@ const borrowSchema = new Schema<IBorrow, borrowStaticMethods>(
 // pre hook
 borrowSchema.pre("save", async function () {
   const book = await Book.findById(this.book);
-  if (book && book.copies === 0) {
+  if (book &&this.quantity> book.copies ) {
     return;
   }
 });
